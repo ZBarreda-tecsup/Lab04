@@ -3,45 +3,75 @@ package com.example.moviecontrol
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.moviecontrol.ui.theme.MovieControlTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            MovieControlTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+            MyScreen()
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun MyScreen() {
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        Text(text = "LazyColumn Example")
+        MyLazyColumn()
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(text = "LazyRow Example")
+        MyLazyRow()
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(text = "Icon Example")
+        MyIcon()
+    }
+}
+
+@Composable
+fun MyLazyColumn() {
+    LazyColumn {
+        items(10) { index ->
+            Text(text = "Item #$index", modifier = Modifier.padding(8.dp))
+        }
+    }
+}
+
+@Composable
+fun MyLazyRow() {
+    LazyRow {
+        items(5) { index ->
+            Text(text = "Item #$index", modifier = Modifier.padding(8.dp))
+        }
+    }
+}
+
+@Composable
+fun MyIcon() {
+    Icon(
+        imageVector = Icons.Filled.Phone, // Icono de teléfono
+        contentDescription = "Phone Icon",
+        modifier = Modifier.size(30.dp)
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    MovieControlTheme {
-        Greeting("Android")
-    }
+fun DefaultPreview() {
+    MyScreen()
 }
