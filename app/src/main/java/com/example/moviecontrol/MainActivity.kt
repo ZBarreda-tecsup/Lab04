@@ -47,7 +47,7 @@ fun MyScreen() {
 fun MyLazyColumn() {
     LazyColumn {
         items(10) { index ->
-            Text(text = "Item #$index", modifier = Modifier.padding(8.dp))
+            Text(text = "objeto #$index", modifier = Modifier.padding(8.dp))
         }
     }
 }
@@ -64,11 +64,14 @@ fun MyLazyRow() {
 @Composable
 fun MyIcon() {
     Icon(
-        imageVector = Icons.Filled.Phone, // Icono de teléfono
+        imageVector = Icons.Filled.Favorite, // Icono de teléfono
         contentDescription = "Phone Icon",
+        tint = Color.Red,
         modifier = Modifier.size(30.dp)
     )
 }
+
+
 
 @Preview(showBackground = true)
 @Composable
