@@ -66,7 +66,7 @@ fun MyIcon() {
     Icon(
         imageVector = Icons.Filled.Favorite, // Icono de teléfono
         contentDescription = "Phone Icon",
-        tint = Color.Red,
+        tint = Color.Green,
         modifier = Modifier.size(30.dp)
     )
 }
